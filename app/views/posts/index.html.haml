@@ -1,71 +1,73 @@
 %p#notice= notice
 
-.sm:mx-auto.sm:w-full.sm:max-w-md
+.sm:mx-auto
   .flex.flex-col
-    %h1.font-medium.leading-tight.text-2xl.mt-0.mb-2 Posts
-    .overflow-x-auto.sm:-mx-6.lg:-mx-8
+    %h1.font-medium.leading-tight.text-2xl.mt-0.mb-2.text-center Posts
+    .sm:-mx-6.lg:-mx-8
       .py-2.inline-block.min-w-full.sm:px-6.lg:px-8
-        .overflow-hidden
+        .overflow-hidden.mb-6
           %table.min-w-full.text-center.border
             %thead
               %tr
-                %th.text-sm.font-medium.text-gray-900.px-6.py-4.border{:scope => "col"} Name
-                %th.text-sm.font-medium.text-gray-900.px-6.py-4.border{:scope => "col"} Content
-                %th.text-sm.font-medium.text-gray-900.px-6.py-4.border{:colspan => "3", :scope => "col"} Actions
+                %th.text-sm.font-medium.text-gray-900.px-6.py-4.border{scope: 'col'} Name
+                %th.text-sm.font-medium.text-gray-900.px-6.py-4.border{scope: 'col'} Content
+                %th.text-sm.font-medium.text-gray-900.px-6.py-4.border{colspan: '3', scope: 'col'} Actions
             %tbody
               - @posts.each do |post|
                 %tr
                   %td.px-6.py-4.whitespace-nowrap.text-sm.font-medium.text-gray-900.border= post.name
-                  %td.px-6.py-4.whitespace-nowrap.text-sm.font-medium.text-gray-900.border= post.content
+                  %td.px-6.py-4.whitespace-nowrap.text-sm.font-medium.text-gray-900.max-w-xl.overflow-hidden.border= post.content
                   %td.px-6.py-4.whitespace-nowrap.text-sm.font-medium.text-gray-900.border= link_to 'Show', post
                   %td.px-6.py-4.whitespace-nowrap.text-sm.font-medium.text-gray-900.border= link_to 'Edit', edit_post_path(post)
                   %td.px-6.py-4.whitespace-nowrap.text-sm.font-medium.text-gray-900.border= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }
-        .mt-4.ml-2.font-semibold.rounded-md= link_to 'New Post', new_post_path
-    %h2.font-medium.leading-tight.text-3xl.mt-0.mb-2.mt-20
+        .text-center= link_to 'New Post', new_post_path, class: 'ml-2 font-semibold rounded-md text-2xl border-solid border-2 border-gray-500 p-2'
+
+    %h2.font-medium.leading-tight.text-3xl.mt-0.mb-2.mt-20.text-center
       Every element on this page uses Tailwind
-      %h2.font-medium.leading-tight.text-3xl.mt-0.mb-2
-        The following content is copy pasted
-        .flex.font-sans.mt-10
-          .flex-none.w-48.relative
-            %img.absolute.inset-0.w-full.h-full.object-cover{:alt => "", :loading => "lazy", :src => "https://cdn.shopify.com/s/files/1/0086/1483/8327/products/Hook_n3metereesBackTank_760x.jpg?v=1667351608"}/
-          %form.flex-auto.p-6
-            .flex.flex-wrap
-              %h1.flex-auto.text-lg.font-semibold.text-slate-900
-                Classic Singlet
-              .text-lg.font-semibold.text-slate-500
-                $30.00
-              .w-full.flex-none.text-sm.font-medium.text-slate-700.mt-2
-                In stock
-            .flex.items-baseline.mt-4.mb-6.pb-6.border-b.border-slate-200
-              .space-x-2.flex.text-sm
-                %label
-                  %input.sr-only.peer{:checked => "checked", :name => "size", :type => "radio", :value => "xs"}/
-                  .w-9.h-9.rounded-lg.flex.items-center.justify-center.text-slate-700.peer-checked:font-semibold.peer-checked:bg-slate-900.peer-checked:text-white
-                    XS
-                %label
-                  %input.sr-only.peer{:name => "size", :type => "radio", :value => "s"}/
-                  .w-9.h-9.rounded-lg.flex.items-center.justify-center.text-slate-700.peer-checked:font-semibold.peer-checked:bg-slate-900.peer-checked:text-white
-                    S
-                %label
-                  %input.sr-only.peer{:name => "size", :type => "radio", :value => "m"}/
-                  .w-9.h-9.rounded-lg.flex.items-center.justify-center.text-slate-700.peer-checked:font-semibold.peer-checked:bg-slate-900.peer-checked:text-white
-                    M
-                %label
-                  %input.sr-only.peer{:name => "size", :type => "radio", :value => "l"}/
-                  .w-9.h-9.rounded-lg.flex.items-center.justify-center.text-slate-700.peer-checked:font-semibold.peer-checked:bg-slate-900.peer-checked:text-white
-                    L
-                %label
-                  %input.sr-only.peer{:name => "size", :type => "radio", :value => "xl"}/
-                  .w-9.h-9.rounded-lg.flex.items-center.justify-center.text-slate-700.peer-checked:font-semibold.peer-checked:bg-slate-900.peer-checked:text-white
-                    XL
-            .flex.space-x-4.mb-6.text-sm.font-medium
-              .flex-auto.flex.space-x-4
-                %button.h-10.px-6.font-semibold.rounded-md.bg-black.text-white{:type => "submit"}
-                  Buy now
-                %button.h-10.px-6.font-semibold.rounded-md.border.border-slate-200.text-slate-900{:type => "button"}
-                  Add to bag
-              %button.flex-none.flex.items-center.justify-center.w-9.h-9.rounded-md.text-slate-300.border.border-slate-200{"aria-label" => "Like", :type => "button"}
-                %svg{"aria-hidden" => "true", :fill => "currentColor", :height => "20", :width => "20"}
-                  %path{"clip-rule" => "evenodd", :d => "M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z", "fill-rule" => "evenodd"}
-            %p.text-sm.text-slate-700
-              Free shipping on all continental US orders.
+
+      %h2.font-medium.leading-tight.text-3xl.mt-0.mb-2.text-center
+        The content below is copy-pasta'd, but also powered by Tailwind
+      .flex.font-sans.mt-10
+        .flex-none.w-48.relative
+          %img.absolute.inset-0.w-full.h-full.object-cover{alt: '', loading: 'lazy', src: 'https://cdn.shopify.com/s/files/1/0086/1483/8327/products/Hook_n3metereesBackTank_760x.jpg?v=1667351608'}/
+        %form.flex-auto.p-6
+          .flex.flex-wrap
+            %h1.flex-auto.text-lg.font-semibold.text-slate-900
+              Classic Singlet
+            .text-lg.font-semibold.text-slate-500
+              $30.00
+            .w-full.flex-none.text-sm.font-medium.text-slate-700.mt-2
+              In stock
+          .flex.items-baseline.mt-4.mb-6.pb-6.border-b.border-slate-200
+            .space-x-2.flex.text-sm
+              %label
+                %input.sr-only.peer{checked: 'checked', name: 'size', type: 'radio', value: 'xs'}/
+                .w-9.h-9.rounded-lg.flex.items-center.justify-center.text-slate-700.peer-checked:font-semibold.peer-checked:bg-slate-900.peer-checked:text-white
+                  XS
+              %label
+                %input.sr-only.peer{name: 'size', type: 'radio', value: 's'}/
+                .w-9.h-9.rounded-lg.flex.items-center.justify-center.text-slate-700.peer-checked:font-semibold.peer-checked:bg-slate-900.peer-checked:text-white
+                  S
+              %label
+                %input.sr-only.peer{name: 'size', type: 'radio', value: 'm'}/
+                .w-9.h-9.rounded-lg.flex.items-center.justify-center.text-slate-700.peer-checked:font-semibold.peer-checked:bg-slate-900.peer-checked:text-white
+                  M
+              %label
+                %input.sr-only.peer{name: 'size', type: 'radio', value: 'l'}/
+                .w-9.h-9.rounded-lg.flex.items-center.justify-center.text-slate-700.peer-checked:font-semibold.peer-checked:bg-slate-900.peer-checked:text-white
+                  L
+              %label
+                %input.sr-only.peer{name: 'size', type: 'radio', value: 'xl'}/
+                .w-9.h-9.rounded-lg.flex.items-center.justify-center.text-slate-700.peer-checked:font-semibold.peer-checked:bg-slate-900.peer-checked:text-white
+                  XL
+          .flex.space-x-4.mb-6.text-sm.font-medium
+            .flex-auto.flex.space-x-4
+              %button.h-10.px-6.font-semibold.rounded-md.bg-black.text-white{type: 'submit'}
+                Buy now
+              %button.h-10.px-6.font-semibold.rounded-md.border.border-slate-200.text-slate-900{type: 'button'}
+                Add to bag
+            %button.flex-none.flex.items-center.justify-center.w-9.h-9.rounded-md.text-slate-300.border.border-slate-200{'aria-label' => 'Like', type: 'button'}
+              %svg{'aria-hidden' => 'true', fill: 'currentColor', height: '20', width: '20'}
+                %path{'clip-rule' => 'evenodd', d: "M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z", 'fill-rule' => 'evenodd'}
+          %p.text-sm.text-slate-700
+            Free shipping on all continental US orders.
