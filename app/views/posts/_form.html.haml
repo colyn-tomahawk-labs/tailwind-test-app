@@ -1,17 +1,14 @@
-= form_with(model: post) do |form|
-  - if post.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(post.errors.count, "error")
-        prohibited this post from being saved:
-      %ul
-        - post.errors.each do |error|
-          %li= error.full_message
-  .field
-    = form.label :name
-    = form.text_field :name
-  .field
-    = form.label :content
-    = form.text_area :content
-  .actions
-    = form.submit
+.mt-8.sm:mx-auto.sm:w-full.sm:max-w-md
+  %h1.font-medium.leading-tight.text-2xl.mt-0.mb-2.text-center New Post
+  .py-8.px-6.shadow.rounded-lg.sm:px-10
+    = form_with(model: post, class: 'mb-0 space-y-6') do |form|
+      .field
+        = form.label :name
+        = form.text_field :name, class: 'w-full border border-gray-300 px-3 py-2 rounded-lg'
+      .field
+        = form.label :content
+        = form.text_area :content, class: 'w-full border border-gray-300 px-3 py-2 rounded-lg'
+      .actions
+        = form.submit
+  .mt-10.text-center
+    = link_to 'Back', posts_path
