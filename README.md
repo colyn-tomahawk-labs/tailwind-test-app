@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Just a small foray into the capabilities of the [tailwindcss-rails](https://github.com/rails/tailwindcss-rails) gem and tailwind itself
 
-Things you may want to cover:
+To use simply just clone the repo and enter the following
 
-* Ruby version
+```bash
+cd tailwind-test-app
+bundle
+rails db:migrate
+rails s
+```
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+then navigate to `http://localhost:<port>/` in your browser

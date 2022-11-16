@@ -5,23 +5,23 @@
   <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
     <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
       <div class="overflow-hidden">
-        <table class="min-w-full border text-center">
-          <thead class="border-b">
+        <table class="min-w-full text-center border">
+          <thead class="">
             <tr>
-              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 border-r">Name</th>
-              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 border-r">Content</th>
-              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 border-r" colspan="3">Actions</th>
+              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 border">Name</th>
+              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 border">Content</th>
+              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 border" colspan="3">Actions</th>
             </tr>
           </thead>
 
           <tbody>
             <% @posts.each do |post| %>
-              <tr class="border-b">
-                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r"><%= post.name %></td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r"><%= post.content %></td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r"><%= link_to 'Show', post %></td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r"><%= link_to 'Edit', edit_post_path(post) %></td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border-r"><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <tr class="">
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border"><%= post.name %></td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border"><%= post.content %></td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border"><%= link_to 'Show', post %></td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border"><%= link_to 'Edit', edit_post_path(post) %></td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 border"><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
               </tr>
             <% end %>
           </tbody>
