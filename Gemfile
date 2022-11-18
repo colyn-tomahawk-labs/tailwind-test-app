@@ -22,6 +22,9 @@ gem 'html2haml'
 gem 'simple_form'
 gem 'limeade'
 gem 'limesurvey'
+gem 'dotenv'
+gem 'dotenv-rails'
+gem 'httparty'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
