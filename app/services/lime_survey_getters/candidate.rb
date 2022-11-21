@@ -1,37 +1,29 @@
 module LimeSurveyGetters
   class Candidate
+    attr_accessor :survey_id
 
-    def self.ping
-      #retrieves answers for candidate dFAVrdkEy1Kh in survey:
+    def initialize(survey_id = 572686)
+      # 572686 is the survey id of our 'test' survey
+      @survey_id = survey_id
+    end
+
+    def user_survey_data
+      # retrieves answers for candidate dFAVrdkEy1Kh in survey:
       # https://premfa.premosystems.com/admin/survey/sa/view/surveyid/572686
 
-      url = 'https://premfa.premosystems.com/admin/remotecontrol'
+      session_key = SessionKey.new(survey_id: survey_id).get_session_key
 
-      session_key_response = HTTParty.post(url,
-        body: {
-          method: 'get_session_key',
-          params: [
-            ENV['LIMESURVEY_USERNAME'],
-            ENV['LIMESURVEY_PASSWORD']
-          ],
-          id: 572686
-        }.to_json,
-        headers: {
-          'content-type': 'application/json'
-        }
-      )
-      session_key = JSON.parse(session_key_response)['result']
-
-      response = HTTParty.post(url,
+      response = HTTParty.post(
+        'https://premfa.premosystems.com/admin/remotecontrol',
         body: {
           method: 'export_responses_by_token',
           params: {
             sSessionKey: session_key,
-            iSurveyId: '572686',
-            sDocumentType: "json",
-            sToken: "dFAVrdkEy1Kh", # candidate id
+            iSurveyId: survey_id.to_s,
+            sDocumentType: 'json',
+            sToken: 'dFAVrdkEy1Kh', # candidate id
             sLanguageCode: nil,
-            sResponseType: "long"
+            sResponseType: 'long'
           },
           id: '2'
         }.to_json,
@@ -42,7 +34,11 @@ module LimeSurveyGetters
 
       encoded_user_data = JSON.parse(response.parsed_response)
       decoded = Base64.decode64(encoded_user_data['result'])
-      JSON.parse(decoded)['responses']
+      user_response_data = JSON.parse(decoded)['responses']
+
+      Disconnector.new(session_key: session_key).disconnect
+      
+      user_response_data.first.flatten.last
     end
   end
 end
