@@ -11,6 +11,8 @@ module LimeSurveyGetters
       # retrieves answers for candidate dFAVrdkEy1Kh in survey:
       # https://premfa.premosystems.com/admin/survey/sa/view/surveyid/572686
 
+      # documentation: https://api.limesurvey.org/classes/remotecontrol_handle.html
+
       session_key = SessionKey.new(survey_id: survey_id).get_session_key
 
       response = HTTParty.post(
@@ -36,7 +38,7 @@ module LimeSurveyGetters
       decoded = Base64.decode64(encoded_user_data['result'])
       user_response_data = JSON.parse(decoded)['responses']
 
-      Disconnector.new(session_key: session_key).disconnect
+      Disconnector.new(session_key: session_key).disconnect_from_live_session
       
       user_response_data.first.flatten.last
     end

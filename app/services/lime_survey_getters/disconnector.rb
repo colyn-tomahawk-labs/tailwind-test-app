@@ -6,7 +6,7 @@ module LimeSurveyGetters
       @session_key = session_key
     end
 
-    def disconnect
+    def disconnect_from_live_session
       encoded_session_key = Base64.encode64(session_key)
 
       HTTParty.post(
