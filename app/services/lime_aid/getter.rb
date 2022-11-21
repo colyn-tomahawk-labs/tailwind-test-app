@@ -1,5 +1,5 @@
 module LimeAid
-  class Getter
+  class Getter < Base
 
     def self.ping
       #client = Limeade::Client.new(url, 'colyn.prater', 'TK4MmH9wUeD7nGY', retry_options: {max: 1})

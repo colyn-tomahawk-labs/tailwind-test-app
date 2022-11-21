@@ -19,10 +19,10 @@ Also included is a trial of gems used to integrate with the LimeSurvey `Remote C
 Thus far the findings have been that the `limeade` and `limesurvey` gems don't give us the degree of control we need.
 Mostly in terms of sending the parameters we want to, in requests such as [export_responses_by_token](https://api.limesurvey.org/classes/remotecontrol_handle.html#method_export_responses_by_token)
 
-See `app/services/lime_survey_getters/candidate.rb` for a simple integration thrown together from scratch.
+See [app/services/lime_survey_client/candidate_survey_getter.rb](https://github.com/colyn-tomahawk-labs/tailwind-test-app/blob/master/app/services/lime_survey_client/candidate_survey_getter.rb) for a simple integration thrown together from scratch.
 
 ```bash
 # ensure that the LIMESURVEY_USERNAME and LIMESURVEY_PASSWORD env vars are set in .env
 rails c
-LimeSurveyGetters::Candidate.new.user_survey_data
+LimeSurveyClient::CandidateSurveyGetter.new.get
 ```
