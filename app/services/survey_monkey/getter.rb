@@ -2,7 +2,7 @@ module SurveyMonkey
   class Getter
 
     def get
-      # 509565505 is our survey id
+      # our survey id: 509565505
       # the survey: https://www.surveymonkey.com/r/KS32HSH
       url = 'https://api.surveymonkey.com/v3/surveys/509565505/responses/bulk?simple=true'
       
