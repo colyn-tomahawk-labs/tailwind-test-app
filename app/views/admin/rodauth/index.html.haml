@@ -1,0 +1,14 @@
+%h1 Users
+
+%table
+  %thead
+    %tr
+      %th Email
+      %th Account type
+      %th Verified (we don't use this feature, PREMFA doesn't)
+  %tbody
+    - @accounts.each do |account|
+      %tr
+        %td= account.email
+        %td= account.user_type
+        %td= account.status

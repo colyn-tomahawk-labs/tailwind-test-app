@@ -1,5 +1,8 @@
 %p#notice= notice
 
+- if current_account.system_admin?
+  = link_to 'Create user', admin_users_new_path, class: 'ml-2 font-semibold rounded-md text-2xl border-solid border-2 border-gray-500 p-2'
+
 .sm:mx-auto
   .flex.flex-col
     %h1.font-medium.leading-tight.text-2xl.mt-0.mb-2.text-center Posts
