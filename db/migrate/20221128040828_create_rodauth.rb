@@ -1,7 +1,8 @@
 class CreateRodauth < ActiveRecord::Migration[7.0]
   def change
     create_table :accounts do |t|
-      t.integer :type, null: false, default: 0
+      t.integer :status, null: false, default: 1
+      t.integer :user_type, null: false, default: 0
       t.string :email, null: false
       t.index :email, unique: true
       t.string :password_hash

@@ -1,6 +1,7 @@
 class Account < ApplicationRecord
   include Rodauth::Rails.model
-  enum :type,
+  
+  enum :user_type,
     candidate: 0,
     company_admin: 1,
     system_admin: 2

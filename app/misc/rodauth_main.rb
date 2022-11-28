@@ -38,7 +38,7 @@ class RodauthMain < Rodauth::Rails::Auth
     password_maximum_bytes 72
 
     # Set password when creating account instead of when verifying.
-    verify_account_set_password? false
+    # verify_account_set_password? false
 
     # Redirect back to originally requested location after authentication.
     # login_return_to_requested_location? true
@@ -58,9 +58,9 @@ class RodauthMain < Rodauth::Rails::Auth
     create_reset_password_email do
       RodauthMailer.reset_password(self.class.configuration_name, account_id, reset_password_key_value)
     end
-    create_verify_account_email do
-      RodauthMailer.verify_account(self.class.configuration_name, account_id, verify_account_key_value)
-    end
+    # create_verify_account_email do
+    #  RodauthMailer.verify_account(self.class.configuration_name, account_id, verify_account_key_value)
+    # end
     create_verify_login_change_email do |_login|
       RodauthMailer.verify_login_change(self.class.configuration_name, account_id, verify_login_change_key_value)
     end
@@ -132,7 +132,7 @@ class RodauthMain < Rodauth::Rails::Auth
     logout_redirect "/"
 
     # Redirect to wherever login redirects to after account verification.
-    verify_account_redirect { login_redirect }
+    # verify_account_redirect { login_redirect }
 
     # Redirect to login page after password reset.
     reset_password_redirect { login_path }
