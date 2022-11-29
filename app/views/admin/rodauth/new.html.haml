@@ -1,1 +1,2 @@
-= render 'form'
+%h1 New User
+= render partial: 'form', locals: { http_method: :post, path: admin_users_create_path }

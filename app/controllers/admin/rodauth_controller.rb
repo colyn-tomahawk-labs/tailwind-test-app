@@ -21,7 +21,18 @@ class Admin::RodauthController < ApplicationController
   end
 
   def edit
-    # TODO
+    @account = Account.find(params[:format])
+  end
+
+  def update
+    account = Account.find_by(email: account_params[:email])
+    account.update!(account_params.to_h)
+    
+    if account_params[:user_type] != 'system_admin'
+      redirect_to root_path
+    else
+      redirect_to admin_users_path
+    end
   end
 
   private

@@ -1,14 +1,16 @@
-%h1 Users
-
-%table
+%table.min-w-full.text-center.border
   %thead
     %tr
-      %th Email
-      %th Account type
-      %th Verified (we don't use this feature, PREMFA doesn't)
+      %th.text-sm.font-medium.text-gray-900.px-6.py-4.border Email
+      %th.text-sm.font-medium.text-gray-900.px-6.py-4.border Account type
+      %th.text-sm.font-medium.text-gray-900.px-6.py-4.border Verified (we don't use acc verification, PREMFA doesn't)
+      %th.text-sm.font-medium.text-gray-900.px-6.py-4.border Actions
   %tbody
     - @accounts.each do |account|
       %tr
-        %td= account.email
-        %td= account.user_type
-        %td= account.status
+        %td.px-6.py-4.whitespace-nowrap.text-sm.font-medium.text-gray-900.border= account.email
+        %td.px-6.py-4.whitespace-nowrap.text-sm.font-medium.text-gray-900.border= account.user_type.titleize
+        %td.px-6.py-4.whitespace-nowrap.text-sm.font-medium.text-gray-900.border= "#{account.status} (enum field)"
+        %td.px-6.py-4.whitespace-nowrap.text-sm.font-medium.text-gray-900.border= link_to 'Edit', admin_users_edit_path(account)
+
+= link_to 'New User', admin_users_path, class: 'ml-2 font-semibold rounded-md text-2xl border-solid border-2 border-gray-500'

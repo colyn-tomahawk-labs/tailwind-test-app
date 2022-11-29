@@ -1,5 +1,4 @@
 - if rodauth.logged_in?
-  %p= current_account.email
   = link_to 'Sign out', rodauth.logout_path, data: { method: :post }, class: 'ml-2 font-semibold rounded-md text-2xl border-solid border-2 border-gray-500'
 - else
   = link_to 'Sign In', rodauth.login_path

@@ -1,13 +1,14 @@
 .mt-8.sm:mx-auto.sm:w-full.sm:max-w-md
   %h1.font-medium.leading-tight.text-2xl.mt-0.mb-2.text-center New Post
   .py-8.px-6.shadow.rounded-lg.sm:px-10
-    = simple_form_for(@account, method: :post, url: admin_users_create_path, class: 'mb-0 space-y-6') do |f|
+    = simple_form_for(@account, method: http_method, url: path, class: 'mb-0 space-y-6') do |f|
       .field
         = f.input :email
       .field
         = f.input :user_type, as: :radio_buttons, collection: Account::user_types.map(&:first)
-      .field
-        = f.input :password
-      .actions= f.submit
+      - if http_method == :post
+        .field
+          = f.input :password
+      .action.sml-2.font-semibold.rounded-md.text-2xl.border-solid.border-2.border-gray-500.p-2= f.submit
   .mt-10.text-center
     = link_to 'Back', admin_users_path, class: 'ml-2 font-semibold rounded-md text-2xl border-solid border-2 border-gray-500 p-2'
