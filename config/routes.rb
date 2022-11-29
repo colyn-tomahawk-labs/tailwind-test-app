@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :posts
 
-  constraints Rodauth::Rails.authenticated { |rodauth| rodauth.rails_account.system_admin? } do
+  constraints Rodauth::Rails.authenticated { |r| r.rails_account.sys_admin? } do
     namespace :admin do
       get '/users',          to: 'rodauth#index'
       get '/users/new',      to: 'rodauth#new'

@@ -3,7 +3,7 @@ class Account < ApplicationRecord
 
   enum user_type: [
     :candidate,
-    :company_admin,
-    :system_admin
+    :org_admin,
+    :sys_admin
   ]
 end

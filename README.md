@@ -46,5 +46,29 @@ The SurveyMonkey gives us a lot more information in its response (survey urls, q
 Essentially though there are no real boons I've found yet to find with SurveyMonkey, other than perhaps a better user experience for those creating surveys, essesntially the two services give us the same thing.
 My opinion after playing around with both services is that perhaps a jump from LimeSurvey to SurveyMonkey isn't worth it, we may be trying to improve on something that was particularly lacking in the first place
 
-## Rodauth
-under construction
+## rodauth-rails
+
+First up: better than Devise for our use case.
+
+Rodauth's implementation is leaner than Devise' and still just as flixible if not more.
+It was relatively easy to create the concept of:
+An account, with the account type user being able to view any other user (regardless if they're admin, OrgAdmin or System admin),
+as well as create and edit them. A Sysadmin can create an account, hand the email and password to someone and they're able
+to log in with it. All with a very small, simple implementation. Thats huge
+
+### A quirk (and a boon?)
+
+Rodauth has its own routing implementation, but also allows routes to be declared in the classic `config/routes.rb`
+On top of this, it dynamically generates and removes routes altogether in the same user session depending if the user is an admin or not [see here](https://github.com/colyn-tomahawk-labs/tailwind-test-app/blob/master/config/routes.rb#L6). While other precautions should be put in place, this could potentially act as a permissions barrier for candidates or OrgAdmins trying to nose around parts of the platform where they're not welcome.
+
+### Furthermore
+
+It easy to [configure](https://github.com/colyn-tomahawk-labs/tailwind-test-app/tree/master/app/misc) and brings a lot of goodies right out the [box](https://github.com/janko/rodauth-rails).
+It comes with the same handy methods Devise does, we can always access the current user with the `current_account` method.
+It's a thumbs up from me, perfectly library for easy, secure authentication.
+
+Currently, to play around as admin, sign up for the app and use
+```bash
+rails c
+Account.find_by('<email you signed up with>').update(user_type: 'sys_admin')
+```

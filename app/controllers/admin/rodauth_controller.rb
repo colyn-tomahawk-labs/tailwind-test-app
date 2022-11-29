@@ -25,10 +25,10 @@ class Admin::RodauthController < ApplicationController
   end
 
   def update
-    account = Account.find_by(email: account_params[:email])
+    account = Account.find(params[:format])
     account.update!(account_params.to_h)
     
-    if account_params[:user_type] != 'system_admin'
+    if account_params[:user_type] != 'sys_admin'
       redirect_to root_path
     else
       redirect_to admin_users_path
