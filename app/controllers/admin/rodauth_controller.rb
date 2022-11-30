@@ -28,7 +28,7 @@ class Admin::RodauthController < ApplicationController
     account = Account.find(params[:format])
     account.update!(account_params.to_h)
     
-    if account_params[:user_type] != 'sys_admin'
+    if account.reload.sys_admin?
       redirect_to root_path
     else
       redirect_to admin_users_path
