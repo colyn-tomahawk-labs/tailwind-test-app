@@ -1,9 +1,12 @@
 # README
 
-Just a small foray into the capabilities of the [tailwindcss-rails](https://github.com/rails/tailwindcss-rails) gem and tailwind itself, as well as integrations with some third-party systems:
+What began as a small foray into the capabilities of the [tailwindcss-rails](https://github.com/rails/tailwindcss-rails) gem and tailwind itself, this app has become a playground for POC's of integrations with third-party systems and app planning.
+
+3rd party systems explored include:
 
 - Limesurvey Remote Control 2 API
 - SurveyMonkey API v3
+- Rodauth
 
 To use simply just clone the repo and enter the following
 
@@ -15,6 +18,10 @@ rails s
 ```
 
 then navigate to `http://localhost:<port>/` in your browser
+
+## Models for Fit4Work app
+
+Still a work in progress, view it [here](https://github.com/colyn-tomahawk-labs/tailwind-test-app/blob/master/models_diagram.png)
 
 ## LimeSurvey
 
