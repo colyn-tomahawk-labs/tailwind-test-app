@@ -1,0 +1,20 @@
+%h2
+  Surveys
+%h3
+  - if current_account.sys_admin?
+    = link_to "New Survey", new_survey_path, class: 'ml-2 font-semibold rounded-md text-2xl border-solid border-2 border-gray-500'
+%h4
+  = link_to t('Back to home'), '/', class: 'ml-2 font-semibold rounded-md text-2xl border-solid border-2 border-gray-500'
+%hr/
+%table.min-w-full.text-center.border
+  %colgroup
+    %col/
+    %col/
+  %thead
+    %tr
+      %th.text-sm.font-medium.text-gray-900.px-6.py-4.border Survey
+      %th.text-sm.font-medium.text-gray-900.px-6.py-4.border Actions
+  %tbody
+    = render partial: "survey", collection: @surveys
+- if defined?(Kaminari)
+  = paginate @surveys

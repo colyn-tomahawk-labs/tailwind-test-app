@@ -12,5 +12,8 @@ Rails.application.routes.draw do
       patch '/users/update', to: 'rodauth#update'
     end
   end
+
+  mount Rapidfire::Engine => "/rapidfire"
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

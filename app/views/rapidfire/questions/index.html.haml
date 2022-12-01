@@ -1,0 +1,17 @@
+%h2
+  = t('rapidfire.questions.header')
+%h3
+  = link_to t('rapidfire.questions.new'), new_survey_question_path(@survey), class: 'ml-2 font-semibold rounded-md text-2xl border-solid border-2 border-gray-500'
+%h4
+  = link_to t('rapidfire.questions.back'), surveys_path(@survey), class: 'ml-2 font-semibold rounded-md text-2xl border-solid border-2 border-gray-500'
+%hr/
+%table.min-w-full.text-center.border
+  %colgroup
+    %col/
+    %col
+  %thead
+    %tr
+      %th.text-sm.font-medium.text-gray-900.px-6.py-4.border= t('rapidfire.questions.question')
+      %th.text-sm.font-medium.text-gray-900.px-6.py-4.border Actions
+  %tbody
+    = render partial: "question", collection: @questions
