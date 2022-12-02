@@ -1,43 +1,47 @@
 %h3 Question
 
-= form_for form, as: :question, url: url, method: method do |f|
-  - unless form.errors.empty?
-    %ul
-      - form.errors.full_messages.each do |message|
-        %li= message
-  .form-group
-    = f.label :type
-    = f.select :type, ::Rapidfire::QuestionForm::QUESTION_TYPES.merge('File' => 'Rapidfire::Questions::File'), {}, id: 'question_type'
-  .form-group
-    = f.label :question_text
-    = f.text_field :question_text
-  .form-group
-    = f.label :position
-    = f.number_field :position
-  .form-group
-    = f.label :placeholder
-    = f.text_field :placeholder
-  .form-group
-    = f.label :default_text
-    = f.text_field :default_text
-  .form-group
-    = f.label :answer_options
-    = f.text_area :answer_options, rows: 5
-  %h4 Other options
-  %hr/
-  .form-group
-    = f.label :answer_presence
-    = f.check_box :answer_presence
-  .form-group
-    = f.label :answer_minimum_length
-    = f.text_field :answer_minimum_length
-  .form-group
-    = f.label :answer_maximum_length
-    = f.text_field :answer_maximum_length
-  .form-group
-    = f.label :answer_greater_than_or_equal_to
-    = f.text_field :answer_greater_than_or_equal_to
-  .form-group
-    = f.label :answer_less_than_or_equal_to
-    = f.text_field :answer_less_than_or_equal_to
-  = f.submit submit_text
+.mt-8.sm:mx-auto.sm:w-full.sm:max-w-md
+  %h1.font-medium.leading-tight.text-2xl.mt-0.mb-2.text-center New Post
+  .py-8.px-6.shadow.rounded-lg.sm:px-10
+
+    = form_for form, as: :question, url: url, method: method do |f|
+      - unless form.errors.empty?
+        %ul
+          - form.errors.full_messages.each do |message|
+            %li= message
+      .form-group
+        = f.label :type
+        = f.select :type, ::Rapidfire::QuestionForm::QUESTION_TYPES.merge('File' => 'Rapidfire::Questions::File'), {}, id: 'question_type'
+      .form-group
+        = f.label :question_text
+        = f.text_field :question_text
+      .form-group
+        = f.label :position
+        = f.number_field :position
+      .form-group
+        = f.label :placeholder
+        = f.text_field :placeholder
+      .form-group
+        = f.label :default_text
+        = f.text_field :default_text
+      .form-group
+        = f.label :answer_options
+        = f.text_area :answer_options, rows: 5
+      %h4 Other options
+      %hr/
+      .form-group
+        = f.label :answer_presence
+        = f.check_box :answer_presence
+      .form-group
+        = f.label :answer_minimum_length
+        = f.text_field :answer_minimum_length
+      .form-group
+        = f.label :answer_maximum_length
+        = f.text_field :answer_maximum_length
+      .form-group
+        = f.label :answer_greater_than_or_equal_to
+        = f.text_field :answer_greater_than_or_equal_to
+      .form-group
+        = f.label :answer_less_than_or_equal_to
+        = f.text_field :answer_less_than_or_equal_to
+      = f.submit submit_text
