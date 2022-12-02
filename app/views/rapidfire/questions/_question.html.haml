@@ -1,5 +1,6 @@
 %tr{:id => "question_#{question.id}"}
   %td= question.question_text
+  %td= question.type.split('::').last
   %td
     %ul.horizontal-list
       %li= link_to "Edit", [:edit, question.survey, question]

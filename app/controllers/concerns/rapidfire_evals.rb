@@ -21,8 +21,27 @@ module RapidfireEvals
     
           @question = klass.create(to_question_params)
         end
+
+        def to_question_params
+          {
+            survey: survey,
+            question_text: question_text,
+            position: position,
+            default_text: default_text,
+            placeholder: placeholder,
+            answer_options: answer_options,
+            type: type, 
+            validation_rules: {
+              presence: answer_presence,
+              minimum: answer_minimum_length,
+              maximum: answer_maximum_length,
+              greater_than_or_equal_to: answer_greater_than_or_equal_to,
+              less_than_or_equal_to: answer_less_than_or_equal_to
+            }
+          }
+        end
       end
-  
+      
       Rapidfire::Question.class_eval do
         # ActiveRecord::Base#update_attributes is deprecated so we overwrite it here
         def update_attributes(params)

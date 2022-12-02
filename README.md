@@ -86,3 +86,13 @@ Should we choose to bring surveys into fir4work rather than continue with a 3rd 
 of gems to help us do so is farely slim. The only decent one is Rapidfire, it comes with literally everything we need and nothing more out of the box. The only setback is 2 small parts of the app are deprecated, and had to be monkeypatched [here](https://github.com/colyn-tomahawk-labs/tailwind-test-app/blob/master/app/controllers/concerns/rapidfire_evals.rb).
 While this is a concern, it wouldn't be a huge task to just steal 99% of the code used in the gem and pull it into an app.
 It's a small but powerful gem. It doesn't support file uploads (which we need) but I was able to [pattern match](https://github.com/colyn-tomahawk-labs/tailwind-test-app/blob/master/app/models/rapidfire/questions/file.rb) (and slightly hack) it enough to allow file uploads.
+
+The models it provides make it easy to query for survey results, eg:
+
+```ruby
+account = Account.where(user_type: 'sys_admin').last
+Rapidfire::Survey.last.attempts.where(user_id: account.id).order(created_at: :asc).last.answers.pluck(:question_id, :answer_text).to_h
+
+# returns eg:
+{ 15 => "apples", 17=> "yes he is" }
+```
