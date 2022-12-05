@@ -5,6 +5,20 @@ module RapidfireEvals
     before_action :allow_file_upload_for_rapidfire,
       if: -> { controller_path == 'rapidfire/questions' }
 
+    before_action :authenticate_survey_domain,
+      if: -> { controller_path.include?('rapidfire') }
+
+    def authenticate_survey_domain
+      non_admin_in_survey_crud = current_account.present? &&
+        !current_account.sys_admin?                       &&
+        ['new', 'create'].exclude?(action_name)           &&      # allow candidates to take surveys
+        request.controller_class != Rapidfire::AttemptsController # allow redirect to thank you page
+      
+      # eg: /rapidfire/surveys/2/attempts/new
+
+      redirect_to '/' if non_admin_in_survey_crud
+    end
+
     def allow_file_upload_for_rapidfire
       Rapidfire::QuestionForm.class_eval do
         # overwrites the :create_question method found at

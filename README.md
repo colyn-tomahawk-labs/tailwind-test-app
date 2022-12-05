@@ -13,6 +13,7 @@ To use simply just clone the repo and enter the following
 ```bash
 cd tailwind-test-app
 bundle
+./bin/dev
 rails db:migrate
 rails s
 ```
