@@ -81,6 +81,22 @@ rails c
 Account.find_by('<email you signed up with>').update(user_type: 'sys_admin')
 ```
 
+## Admin templates built with Tailwind
+
+Access these with
+
+- `<base url>/admin-templates/one`
+- `<base url>/admin-templates/two`
+- `<base url>/admin-templates/three`.
+
+They may act as a starting point for admin dashboards we want to build out, or at least a nice source to refer to and or tweak from.
+All found at [Tailwind Toolbox Starter Templates](https://www.tailwindtoolbox.com/starter-templates)
+
+Sample code from dribbble
+- [Marketing-Dashboard](https://dribbble.com/shots/6531694-Marketing-Dashboard)
+- [Admin Template by Tailwind toolbox](https://www.tailwindtoolbox.com/templates/admin-template)
+- [Admin Template by David Grzyb](https://github.com/davidgrzyb/tailwind-admin-template)
+
 ## Rapidfire for Survey CRUDS
 
 Should we choose to bring surveys into fir4work rather than continue with a 3rd party system, the list
