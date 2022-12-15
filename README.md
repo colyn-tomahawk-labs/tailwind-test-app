@@ -83,11 +83,21 @@ Account.find_by('<email you signed up with>').update(user_type: 'sys_admin')
 
 ## Admin templates built with Tailwind
 
+All responsive
+
 Access these with
 
 - `<base url>/admin-templates/one`
 - `<base url>/admin-templates/two`
-- `<base url>/admin-templates/three`.
+- `<base url>/admin-templates/three`
+
+## Admin templates built with Tailwind UI
+
+Without paying there are free components we can use from [Tailwind UI](https://tailwindui.com/components/preview)
+
+Also responsive
+
+- `<base url>/admin-templates/four`
 
 They may act as a starting point for admin dashboards we want to build out, or at least a nice source to refer to and or tweak from.
 All found at [Tailwind Toolbox Starter Templates](https://www.tailwindtoolbox.com/starter-templates)

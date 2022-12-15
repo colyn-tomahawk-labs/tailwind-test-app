@@ -15,9 +15,12 @@ Rails.application.routes.draw do
 
   mount Rapidfire::Engine => "/rapidfire"
 
-  ['one', 'two', 'three'].each do |sample|
-    get "/admin-templates/#{sample}", to: "admin_templates##{sample}"
-  end
+  [
+    'one',
+    'two',
+    'three',
+    'four'
+  ].each { |sample| get "/admin-templates/#{sample}", to: "admin_templates##{sample}" }
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,14 +1,18 @@
 class AdminTemplatesController < ApplicationController
   
   def one
-    render layout: false
+    render layout: 'sample_admin_layout'
   end
 
   def two
-    render layout: false
+    render layout: 'sample_admin_layout'
   end
 
   def three
-    render layout: false
+    render layout: 'sample_admin_layout'
+  end
+
+  def four
+    render layout: 'sample_admin_layout'
   end
 end
